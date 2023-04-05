@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CleanBlog.Models;
+using Microsoft.AspNetCore.Authorization;
 using WebApp.Data;
 
 namespace CleanBlog.Controllers;
@@ -19,6 +20,12 @@ public class HomeController : Controller
     {
         var list = _context.Articles.ToList();
         return View(list);
+    }
+
+    public IActionResult About()
+    {
+        var about = _context.Abouts.FirstOrDefault();
+        return View(about);
     }
 
     public IActionResult Privacy()
